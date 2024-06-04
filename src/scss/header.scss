@@ -1,0 +1,330 @@
+//====================================================================================================
+.button {
+	background-color: #f25822;
+	transition: all 0.3s ease 0s;
+	border-radius: rem(30);
+	width: rem(140);
+	height: rem(50);
+	color: #fff;
+	font-weight: 600;
+	font-size: rem(12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media (max-width: $mobile) {
+		margin-right: rem(20);
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			box-shadow: 0 0 5px #f25822;
+		}
+	}
+}
+
+.logo {
+	font-size: rem(24);
+	font-weight: 700;
+	display: flex;
+	transition: all 0.3s ease 0s;
+	align-items: center;
+	span {
+		color: #f25822;
+	}
+}
+
+.header {
+	position: relative;
+	z-index: 20;
+	&__container {
+		display: flex;
+		height: rem(114);
+		align-items: center;
+		@media (max-width: $mobile) {
+			height: rem(90);
+		}
+	}
+
+	&__logo {
+		@media (any-hover: hover) {
+			&:hover {
+				text-shadow: 0px 0px 3px #000;
+			}
+		}
+		img {
+			padding-right: rem(20);
+			@media (max-width: $tablet) {
+				display: none;
+			}
+		}
+
+		@media (max-width: $mobile) {
+			.menu-open & {
+				position: relative;
+				z-index: 5;
+			}
+		}
+	}
+
+	&__menu {
+		flex: 1 1 auto;
+		.menu-open & {
+			@keyframes burger {
+				0% {
+					left: -55%;
+					opacity: 0.5;
+				}
+				100% {
+					left: 0;
+				}
+			}
+		}
+	}
+
+	&__button {
+		flex: 0 0 rem(154);
+		display: flex;
+		justify-content: flex-end;
+		a {
+			width: rem(120);
+			height: rem(40);
+		}
+		@media (max-width: $mobile) {
+			.menu-open & {
+				position: relative;
+				z-index: 5;
+			}
+		}
+		@media (max-width: $tablet) {
+			flex: 0 0 rem(134);
+		}
+	}
+}
+.menu {
+	display: flex;
+	justify-content: flex-end;
+
+	&__body {
+		@media (max-width: $mobile) {
+			display: none;
+			.menu-open & {
+				display: inline-flex;
+				position: fixed;
+				background-color: #f25822;
+				text-align: center;
+				justify-content: center;
+				top: 0;
+				left: 0;
+				padding: rem(100) 0;
+				width: 100%;
+				height: 100%;
+				animation-name: burger;
+				animation-duration: 0.3s;
+				overflow: auto;
+			}
+		}
+		&::before {
+			.menu-open & {
+				content: "";
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: rem(90);
+				width: 100%;
+				background-color: #fff;
+			}
+			@media (min-width: $mobile) {
+				display: none;
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		@media (max-width: $mobile) {
+			.menu-open & {
+				height: 100%;
+				flex-direction: column;
+				gap: rem(30);
+				font-size: rem(30);
+				margin: rem(40) 0px;
+			}
+		}
+	}
+
+	&__item {
+		font-weight: 500;
+		@include adaptiveValue("margin-right", 40, 15);
+		&:last-child {
+			margin: 0px 0px 0px 0px;
+		}
+		@media (max-width: $mobile) {
+			.menu-open & {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&__link {
+		transition: all 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #f25822;
+			}
+		}
+		@media (max-width: $mobile) {
+			.menu-open & {
+				@media (any-hover: hover) {
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	&__icon {
+	}
+}
+
+.item-spoller {
+	&__item {
+	}
+
+	&__title {
+		position: relative;
+		font-weight: 500;
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #f25822;
+			}
+		}
+		&::before {
+			transition: transform 0.3s ease 0s;
+			position: absolute;
+			font-size: rem(7);
+			top: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			right: rem(-18);
+			width: rem(18);
+			height: rem(18);
+		}
+		@media (max-width: $mobile) {
+			.menu-open & {
+				&::before {
+					font-size: rem(14);
+					right: rem(-30);
+					top: rem(13);
+				}
+				@media (any-hover: hover) {
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		&._spoller-active {
+			&::before {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&__body {
+		position: absolute;
+		background-color: #f25822;
+		padding: rem(10);
+		border-radius: rem(10);
+		margin: rem(5) 0 0 0;
+		color: #fff;
+		@media (max-width: $mobile) {
+			background-color: #fff;
+			padding: rem(10);
+			color: #000;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		transition: all 0.3s ease 0s;
+		margin-top: rem(10);
+		&:first-child {
+			margin-top: rem(0);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #000;
+			}
+		}
+		@media (max-width: $mobile) {
+			margin-top: rem(10);
+			@media (any-hover: hover) {
+				&:hover {
+					color: #f25822;
+				}
+			}
+			&:first-child {
+				margin-top: rem(0);
+			}
+		}
+	}
+}
+//========================================================================================================================================================
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: inline-block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
