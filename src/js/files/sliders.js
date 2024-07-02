@@ -116,7 +116,7 @@ function initSliders() {
 			modules: [Navigation, Pagination],
 			observer: true,
 			observeParents: true,
-			slidesPerView: 3,
+			slidesPerView: 1,
 			spaceBetween: 50,
 			//autoHeight: true,
 			speed: 800,
